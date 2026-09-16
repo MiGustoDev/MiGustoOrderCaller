@@ -1,84 +1,123 @@
-# Mi Gusto - Llamador de pedidos
+<div align="center">
 
-Sistema **offline de gestión y llamado de pedidos** pensado para utilizarse en **puntos de venta, eventos, ferias, foodtrucks o cualquier espacio de despacho de pedidos**, diseñado para funcionar sin internet, con interfaz táctil para el contador y una vista optimizada para TV vertical en el sector de retiro.
+  <img src="public/Logo%20Mi%20Gusto%202025.png" alt="Mi Gusto Logo" width="180" />
 
-Este proyecto forma parte del ecosistema **Mi Gusto**, y está pensado como una solución simple, rápida y portable para gestionar pedidos en entornos donde la conexión a internet no está garantizada.
+  # 📣 Mi Gusto — Llamador de Pedidos
 
-## Demo
+  **Sistema táctil y display inteligente de gestión de pedidos 100% offline**
 
-### Vista Contador
+  [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+  [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![Offline Ready](https://img.shields.io/badge/Offline-100%25-22c55e?style=for-the-badge&logo=pwa&logoColor=white)](#)
 
-![Vista contador](public/assets/Contador.png)
+</div>
 
-### Vista Llamador
+---
 
-![Vista llamador](public/assets/Llamador.png)
+### 💡 Sobre el Proyecto
 
-## Características principales
+**Mi Gusto — Llamador de Pedidos** es una solución web de alto rendimiento, diseñada para operar en **entornos de despacho dinámicos** donde la velocidad, la claridad visual y la autonomía de conexión son críticas.
 
-- **100% offline**
-  - Funciona completamente sin conexión a internet usando `localStorage`.
-  - Los pedidos persisten incluso al recargar la página o cerrar y reabrir el navegador.
+Diseñado específicamente para **puntos de venta, food trucks, eventos multitudinarios y ferias gastronómicas**, permite sincronizar en tiempo real el armado de órdenes con la pantalla de llamado para los clientes, sin depender de servidores externos ni conexión a Internet.
 
-- **Dos vistas principales**
-  - **Contador**:
-    - Gestión de pedidos con botones táctiles grandes (+1, -1, Enviar).
-    - Pensado para tablets o pantallas táctiles en el área de armado de pedidos.
-  - **Llamador**:
-    - Display vertical optimizado para TVs 1080x1920.
-    - Enfocado en mostrar los números de pedido listos para retirar.
+---
 
-- **Flujo de pedidos**
-  - Incrementar/decrementar el número de pedido actual.
-  - Enviar pedidos a la columna **En Preparación**.
-  - Mover pedidos de **En Preparación** a **A Retirar**.
-  - Eliminar pedidos de cualquiera de las dos listas una vez que se completan.
+## 🖼️ Vistas del Sistema
 
-- **Diseño de la vista Llamador**
-  - Pantalla dividida verticalmente:
-    - **En Preparación** (aprox. 60% superior – fondo naranja).
-    - **A Retirar** (aprox. 40% inferior – fondo verde).
-  - Los números se muestran en grillas de 3 columnas, optimizados para leerse a distancia.
+<div align="center">
 
-## Arquitectura de la aplicación
+<table align="center" style="border-collapse: collapse; border: none; width: 100%;">
+  <tr>
+    <td align="center" width="50%" style="border: none; padding: 10px;">
+      <img src="public/assets/Contador.png" alt="Vista Contador - Panel Touch" width="100%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+      <br />
+      <sub style="font-size: 13px;"><b>🧮 Panel Contador — Control Táctil</b></sub>
+    </td>
+    <td align="center" width="50%" style="border: none; padding: 10px;">
+      <img src="public/assets/Llamador.png" alt="Vista Llamador - Display TV Vertical" width="100%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+      <br />
+      <sub style="font-size: 13px;"><b>📺 Vista Llamador — Display de Turnos</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%" style="border: none; padding: 10px;">
+      <img src="public/assets/Contador-Interactive.png" alt="Gestión de Estados" width="100%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+      <br />
+      <sub style="font-size: 13px;"><b>⚡ Gestión en Tiempo Real</b></sub>
+    </td>
+    <td align="center" width="50%" style="border: none; padding: 10px;">
+      <img src="public/assets/Llamador-TV.png" alt="Visualización TV" width="100%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+      <br />
+      <sub style="font-size: 13px;"><b>🎯 Pantalla de Retiro Optimizada</b></sub>
+    </td>
+  </tr>
+</table>
 
-- **Entrada múltiple con Vite**
-  - `index.html`: punto de entrada genérico, que resuelve la vista según la URL (`vista=contador` o `vista=llamador`).
-  - `contador.html`: entrada dedicada para la vista de contador.
-  - `llamador.html`: entrada dedicada para la vista de llamador.
-  - Configuradas en `vite.config.ts` usando `rollupOptions.input`.
+</div>
 
-- **Gestión de estado**
-  - Estado centralizado con `useLocalStorage` para sincronizar:
-    - `contadorActual`
-    - Lista de pedidos **en preparación**
-    - Lista de pedidos **a retirar**
-  - Todas las operaciones (enviar, mover, eliminar) actualizan el estado central y se reflejan en ambas vistas.
+---
 
-## Tecnologías utilizadas
+## ✨ Características Principales
 
-- **Frontend**
-  - React 18
-  - TypeScript
-  - Vite
-  - Tailwind CSS
-  - Iconos de `lucide-react`
+- ⚡ **100% Offline & Resiliente**  
+  Sin dependencia de APIs externas o servidores cloud. Persistencia inmediata mediante `localStorage` que garantiza cero pérdida de datos ante reinicios.
 
-- **Almacenamiento**
-  - `localStorage` para persistir números y listas de pedidos en el navegador.
+- 📱 **Interfaz Táctil Ergonométrica (Vista Contador)**  
+  Controles oversized (+1, -1, Enviar) diseñados para operarios en cocinas o mostradores táctiles de ritmo rápido.
 
-## Posibles usos
+- 📺 **Display de Gran Formato (Vista Llamador)**  
+  Diseño adaptativo de alto contraste pensado para televisores de 55"+ verticales (1080x1920) y pantallas de despacho visibles a distancia.
 
-Este sistema puede utilizarse en:
+- 🔄 **Flujo de Trabajo Dinámico en 2 Etapas**  
+  - **En Preparación**: Los pedidos recién emitidos se posicionan en el sector superior.
+  - **A Retirar**: Transición con un tap para alertar al cliente en la zona de entrega.
 
-- Restaurantes
-- Foodtrucks
-- Eventos
-- Ferias gastronómicas
-- Puntos de retiro de pedidos
-- Cualquier sistema simple de llamado de números
+- 🎯 **Sincronización Multiventana Instantánea**  
+  Escucha activa de eventos de almacenamiento (`storage event`) para actualizar ambas pantallas simultáneamente en milisegundos.
 
-## Desarrolladores
+---
 
-- **[Facu14carrizo](https://github.com/Facu14carrizo)** · [LinkedIn](https://www.linkedin.com/in/facu14carrizo/)
-- **[ramirolacci](https://github.com/ramirolacci)** · [LinkedIn](https://www.linkedin.com/in/ramiro-lacci/)
+## 🛠️ Tecnologías Clave
+
+<div align="center">
+
+| Tecnología | Rol en el Sistema | Beneficio Clave |
+| :--- | :--- | :--- |
+| **React 18** | UI Framework | Renderizado reactivo y componentes modulares |
+| **TypeScript** | Lenguaje | Tipado estricto para estados de pedidos y eventos |
+| **Tailwind CSS** | Estilos | Diseño responsivo con paleta cromática de alta visibilidad |
+| **Vite** | Bundler & Architecture | Multi-entry build optimizado para distros offline |
+| **Lucide Icons** | Iconografía | Simbología limpia e intuitiva |
+
+</div>
+
+---
+
+## 🎯 Casos de Uso Ideal
+
+- 🍔 **Food Trucks & Stand Gastronómicos**
+- 🍕 **Locales de Comida Rápida & Delivery**
+- 🎪 **Ferias, Festivales & Eventos Masivos**
+- 🛍️ **Puntos de Retiro de Mercadería & Takeaway**
+
+---
+
+## 👥 Desarrolladores
+
+<div align="center">
+
+| Desarrollador | Enlaces |
+| :--- | :--- |
+| **Facundo Carrizo** | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/Facu14carrizo) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/facu14carrizo/) |
+| **Ramiro Lacci** | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/ramirolacci) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ramiro-lacci/) |
+
+</div>
+
+<br />
+
+<div align="center">
+  <sub>Desarrollado con ❤️ para el ecosistema <b>Mi Gusto</b></sub>
+</div>
+
